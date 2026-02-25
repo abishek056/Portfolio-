@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary">
       <ScrollToTopOnNavigate />
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} className="print:hidden" />
 
       <main className="pt-20">
         <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-blue-600/10 to-transparent pointer-events-none -z-10 dark:from-blue-900/10"></div>
@@ -51,7 +51,7 @@ function App() {
         </div>
       </main>
 
-      <Footer />
+      <Footer className="print:hidden" />
       <ScrollToTop />
     </div>
   )

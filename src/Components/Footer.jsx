@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaGithub, FaFacebook, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
-const Footer = () => {
+const Footer = ({ className = "" }) => {
     const socialLinks = [
         { icon: <FaFacebook />, url: "https://www.facebook.com/", name: "Facebook" },
         { icon: <FaInstagram />, url: "https://www.instagram.com/", name: "Instagram" },
@@ -18,7 +18,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-bg-secondary border-t border-glass-border pt-16 pb-8">
+        <footer className={`bg-bg-secondary border-t border-glass-border pt-16 pb-8 ${className}`}>
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                     {/* Brand Column */}

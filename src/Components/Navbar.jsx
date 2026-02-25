@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaHome, FaCode, FaBriefcase, FaEnvelope, FaSun, FaMoon, FaBars, FaTimes, FaBlog } from 'react-icons/fa';
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = ({ darkMode, toggleDarkMode, className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -29,7 +29,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     }`;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-panel py-3 shadow-lg' : 'bg-transparent py-5'
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${className} ${scrolled ? 'glass-panel py-3 shadow-lg' : 'bg-transparent py-5'
       }`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
