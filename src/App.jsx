@@ -10,6 +10,7 @@ import CV from './Pages/CV'
 import Blog from './Pages/Blog'
 import Footer from './Components/Footer'
 import ScrollToTop from './Components/ScrollToTop'
+import ScrollToTopOnNavigate from './Components/ScrollToTopOnNavigate'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary">
+      <ScrollToTopOnNavigate />
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
       <main className="pt-20">

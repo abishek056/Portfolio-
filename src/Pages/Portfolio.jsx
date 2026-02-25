@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaExternalLinkAlt, FaGithub, FaTimes, FaSearch } from 'react-icons/fa';
-import img1 from '../assets/image/pflo1.webp';
-import img2 from '../assets/image/pflo2.webp';
-import img3 from '../assets/image/pflo3.webp';
-import img4 from '../assets/image/pflo4.webp';
-import img5 from '../assets/image/pflo5.webp';
-import img6 from '../assets/image/pflo6.webp';
-import img7 from '../assets/image/pflo7.webp';
-import img8 from '../assets/image/pflo8.webp';
-import img9 from '../assets/image/pflo9.webp';
+// Using professional Unsplash images for better visual appeal
+const img1 = "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=2069&auto=format&fit=crop"; // E-commerce
+const img2 = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"; // Finance
+const img3 = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop"; // Travel
+const img4 = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"; // Product Landing
+const img5 = "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2074&auto=format&fit=crop"; // Social Media
+const img6 = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"; // Corporate
 
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -104,8 +102,8 @@ const Portfolio = () => {
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${filter === cat
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                    : 'bg-bg-secondary text-text-secondary hover:bg-bg-accent border border-glass-border'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
+                  : 'bg-bg-secondary text-text-secondary hover:bg-bg-accent border border-glass-border'
                   }`}
               >
                 {cat}
