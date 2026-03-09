@@ -3,6 +3,48 @@ import { motion } from "framer-motion";
 import { FaPaperPlane, FaGithub, FaFacebook, FaInstagram, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
 const Contact = () => {
+  const [status, setStatus] = React.useState('idle'); // idle, sending, success, error
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+    _captcha: 'false'
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/abishekaa056@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '', _captcha: 'false' });
+      } else {
+        const errorData = await response.json();
+        console.error("FormSubmit error details:", errorData);
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error("Form submission network error:", error);
+      setStatus('error');
+    }
+  };
+
   return (
     <div className="section-padding">
       <div className="container mx-auto px-6">
@@ -95,13 +137,15 @@ const Contact = () => {
             viewport={{ once: true }}
             className="bg-bg-secondary p-10 md:p-12 rounded-[2.5rem] border border-glass-border shadow-xl"
           >
-            <form action="https://formsubmit.co/abishekaa056@gmail.com" method="POST" className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-bold mb-2 text-text-secondary uppercase tracking-wider">Full Name</label>
                   <input
                     type="text"
                     name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Abishek Adhikari"
                     className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary transition-all"
                     required
@@ -112,6 +156,8 @@ const Contact = () => {
                   <input
                     type="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="abishek@example.com"
                     className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary transition-all"
                     required
@@ -123,6 +169,8 @@ const Contact = () => {
                 <input
                   type="text"
                   name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   placeholder="Project Inquiry"
                   className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary transition-all"
                   required
@@ -132,19 +180,35 @@ const Contact = () => {
                 <label className="block text-sm font-bold mb-2 text-text-secondary uppercase tracking-wider">Your Message</label>
                 <textarea
                   name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="How can I help you?"
                   rows="5"
                   className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary transition-all resize-none"
                   required
                 ></textarea>
               </div>
+
+              {status === 'success' && (
+                <div className="p-4 bg-green-500/20 text-green-500 rounded-xl font-bold text-center">
+                  Message sent successfully! Please check your Gmail (and Spam folder) if this is your first time to activate FormSubmit.
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div className="p-4 bg-red-500/20 text-red-500 rounded-xl font-bold text-center">
+                  Oops! Something went wrong. Please try again or email me directly at abishekaa056@gmail.com
+                </div>
+              )}
+
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-5 rounded-2xl font-bold shadow-xl shadow-blue-600/30 flex items-center justify-center gap-3 transition-all text-lg"
+                disabled={status === 'sending'}
+                className={`w-full ${status === 'sending' ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'} text-white py-5 rounded-2xl font-bold shadow-xl shadow-blue-600/30 flex items-center justify-center gap-3 transition-all text-lg`}
               >
-                Send Message <FaPaperPlane />
+                {status === 'sending' ? 'Sending...' : 'Send Message'} <FaPaperPlane />
               </motion.button>
             </form>
           </motion.div>
