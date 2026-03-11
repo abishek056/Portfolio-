@@ -53,7 +53,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold mb-4 font-outfit"
+            className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 font-outfit"
           >
             Get in <span className="text-gradient">Touch</span>
           </motion.h2>
@@ -62,7 +62,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-text-secondary max-w-2xl mx-auto text-lg"
+            className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base md:text-lg"
           >
             Have a project in mind or just want to say hi? I'd love to hear from you.
           </motion.p>
@@ -74,9 +74,9 @@ const Contact = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-bg-secondary p-10 md:p-12 rounded-[2.5rem] border border-glass-border shadow-xl"
+            className="bg-bg-secondary p-8 sm:p-10 md:p-12 rounded-2xl sm:rounded-[2.5rem] border border-glass-border shadow-xl"
           >
-            <h3 className="text-3xl font-bold mb-8 font-outfit">Contact Information</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-6 md:mb-8 font-outfit">Contact Information</h3>
 
             <div className="space-y-8 mb-12">
               <div className="flex items-center gap-6 group">
@@ -135,7 +135,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-bg-secondary p-10 md:p-12 rounded-[2.5rem] border border-glass-border shadow-xl"
+            className="bg-bg-secondary p-8 sm:p-10 md:p-12 rounded-2xl sm:rounded-[2.5rem] border border-glass-border shadow-xl"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -206,7 +206,7 @@ const Contact = () => {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={status === 'sending'}
-                className={`w-full ${status === 'sending' ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'} text-white py-5 rounded-2xl font-bold shadow-xl shadow-blue-600/30 flex items-center justify-center gap-3 transition-all text-lg`}
+                className={`w-full ${status === 'sending' ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'} text-white py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold shadow-xl shadow-blue-600/30 flex items-center justify-center gap-3 transition-all text-base sm:text-lg`}
               >
                 {status === 'sending' ? 'Sending...' : 'Send Message'} <FaPaperPlane />
               </motion.button>

@@ -66,7 +66,7 @@ const Skills = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold mb-4 font-outfit"
+                        className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 font-outfit"
                     >
                         Technical <span className="text-gradient">Skills</span>
                     </motion.h2>
@@ -75,7 +75,7 @@ const Skills = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-text-secondary max-w-2xl mx-auto"
+                        className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base md:text-lg"
                     >
                         I've built a strong foundation in modern web technologies and continuously expanding my toolbox.
                     </motion.p>
@@ -84,7 +84,7 @@ const Skills = () => {
                 <div className="grid md:grid-gap-12 gap-16">
                     {categories.map((cat, catIndex) => (
                         <div key={cat.title}>
-                            <h3 className="text-2xl font-bold mb-8 font-outfit border-l-4 border-blue-500 pl-4">{cat.title}</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold mb-6 md:mb-8 font-outfit border-l-4 border-blue-500 pl-4">{cat.title}</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {cat.skills.map((skill, index) => (
                                     <SkillCard

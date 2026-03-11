@@ -1,13 +1,25 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import { Link } from 'react-router-dom';
-import profile from '../assets/image/image.jpg';
+
+import profile1 from '../assets/image/home/profile1.jpg';
+import profile2 from '../assets/image/home/profile2.jpg';
+import profile3 from '../assets/image/home/profile3.jpg';
+import profile4 from '../assets/image/home/profile4.jpg';
+import profile5 from '../assets/image/home/profile5.jpg';
 
 const Hero = () => {
+    const profiles = [profile1, profile2, profile3, profile4, profile5];
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const nextProfile = () => {
+        setCurrentIndex((prev) => (prev + 1) % profiles.length);
+    };
+
     return (
-        <section className="relative min-h-[90vh] flex flex-col items-center justify-center py-20 overflow-hidden">
-            {/* Background Blobs */}
+        <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col items-center justify-center py-12 md:py-20 overflow-hidden">
+            {/* Background Blobs remains same */}
             <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
             <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
             <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
@@ -29,12 +41,12 @@ const Hero = () => {
                         Available for hire in Nepal
                     </motion.span>
 
-                    <h1 className="text-4xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
+                    <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 md:mb-6 tracking-tight leading-tight">
                         Hi, I'm <span className="text-gradient">Abishek Adhikari</span>
                     </h1>
 
-                    <div className="h-12 md:h-16 mb-8">
-                        <h2 className="text-2xl md:text-4xl font-semibold text-text-secondary">
+                    <div className="h-10 md:h-16 mb-6 md:mb-8">
+                        <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold text-text-secondary">
                             A <span className="text-blue-500">
                                 <Typewriter
                                     words={["Frontend Developer", "Python Developer", "UI/UX Artist", "Innovator"]}
@@ -58,7 +70,7 @@ const Hero = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold shadow-xl shadow-blue-600/25 transition-all text-lg"
+                                className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold shadow-xl shadow-blue-600/25 transition-all text-base md:text-lg"
                             >
                                 Hire Me
                             </motion.button>
@@ -67,7 +79,7 @@ const Hero = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="w-full sm:w-auto px-8 py-4 bg-bg-secondary hover:bg-bg-accent text-text-primary border border-glass-border rounded-2xl font-bold transition-all text-lg"
+                                className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-bg-secondary hover:bg-bg-accent text-text-primary border border-glass-border rounded-2xl font-bold transition-all text-base md:text-lg"
                             >
                                 Download CV
                             </motion.button>
@@ -75,28 +87,37 @@ const Hero = () => {
                     </div>
                 </motion.div>
 
-                {/* Enhanced Profile Image */}
+                {/* Enhanced Interactive Profile Image */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
                     transition={{ duration: 1, ease: "circOut" }}
                     className="md:w-1/2 flex justify-center relative z-10"
                 >
-                    <div className="relative group p-4">
+                    <div className="relative group p-4 cursor-pointer" onClick={nextProfile}>
                         {/* Decorative Frames */}
                         <div className="absolute inset-0 bg-blue-600 rounded-[3rem] rotate-6 opacity-20 group-hover:rotate-12 transition-transform duration-700"></div>
                         <div className="absolute inset-0 bg-purple-600 rounded-[3rem] -rotate-6 opacity-20 group-hover:-rotate-12 transition-transform duration-700"></div>
 
-                        <div className="relative w-64 h-64 md:w-[28rem] md:h-[28rem] overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-white/20 backdrop-blur-sm group-hover:scale-[1.02] transition-transform duration-700">
-                            <img
-                                src={profile}
-                                alt="Abishek Adhikari"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                            />
+                        <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-[28rem] md:h-[28rem] overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-white/20 backdrop-blur-sm group-hover:scale-[1.02] transition-transform duration-700">
+                            <AnimatePresence mode="wait">
+                                <motion.img
+                                    key={currentIndex}
+                                    src={profiles[currentIndex]}
+                                    alt="Abishek Adhikari"
+                                    initial={{ opacity: 0, scale: 1.1 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9 }}
+                                    transition={{ 
+                                        duration: 1.2, 
+                                        ease: [0.4, 0, 0.2, 1] // Custom cubic-bezier for smoother feel
+                                    }}
+                                    className="w-full h-full object-cover"
+                                />
+                            </AnimatePresence>
+
                             <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-
-
                     </div>
                 </motion.div>
             </div>

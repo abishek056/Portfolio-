@@ -1,9 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ImFolderDownload } from "react-icons/im";
 import { FaHome, FaUser, FaBriefcase, FaEnvelope, FaCode } from 'react-icons/fa';
-import image1 from '../assets/image/image.jpg';
+import image1 from '../assets/image/home/image.jpg';
 
 const Sidebar = () => {
   const linkClasses = ({ isActive }) =>
@@ -11,6 +11,17 @@ const Sidebar = () => {
       ? "bg-blue-600/20 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.3)] border border-blue-500/30"
       : "text-gray-400 hover:bg-slate-800/50 hover:text-white hover:scale-102"
     }`;
+  
+  const location = useLocation();
+
+  const handleLinkClick = (path) => {
+    if (location.pathname === path) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const navItems = [
     { path: '/', name: 'Home', icon: <FaHome /> },
@@ -49,7 +60,12 @@ const Sidebar = () => {
       {/* Navigation */}
       <nav className='flex flex-col gap-2'>
         {navItems.map((item) => (
-          <NavLink key={item.path} to={item.path} className={linkClasses}>
+          <NavLink 
+            key={item.path} 
+            to={item.path} 
+            className={linkClasses}
+            onClick={() => handleLinkClick(item.path)}
+          >
             <span className="text-xl group-hover:text-blue-400 transition-colors">{item.icon}</span>
             <span className='font-medium text-base'>{item.name}</span>
           </NavLink>

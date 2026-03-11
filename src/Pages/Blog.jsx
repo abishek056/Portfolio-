@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCalendarAlt, FaClock, FaArrowRight, FaTimes } from 'react-icons/fa';
 
+import blog1 from '../assets/image/blog/blog1.jpg';
+import blog2 from '../assets/image/blog/blog2.jpg';
+import blog3 from '../assets/image/blog/blog3.jpg';
+import blog4 from '../assets/image/blog/blog4.jpg';
+
 const Blog = () => {
     const [selectedPost, setSelectedPost] = useState(null);
 
@@ -14,7 +19,7 @@ const Blog = () => {
             date: "Feb 15, 2026",
             readTime: "5 min read",
             category: "Personal",
-            image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop"
+            image: blog1
         },
         {
             id: 2,
@@ -24,7 +29,7 @@ const Blog = () => {
             date: "Feb 10, 2026",
             readTime: "8 min read",
             category: "Development",
-            image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=2031&auto=format&fit=crop"
+            image: blog2
         },
         {
             id: 3,
@@ -34,7 +39,7 @@ const Blog = () => {
             date: "Feb 5, 2026",
             readTime: "6 min read",
             category: "React",
-            image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop"
+            image: blog3
         },
         {
             id: 4,
@@ -44,7 +49,7 @@ const Blog = () => {
             date: "Jan 28, 2026",
             readTime: "4 min read",
             category: "Learning",
-            image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
+            image: blog4
         }
     ];
 

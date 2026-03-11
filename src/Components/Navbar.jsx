@@ -16,6 +16,16 @@ const Navbar = ({ darkMode, toggleDarkMode, className = "" }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLinkClick = (path) => {
+    if (location.pathname === path) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    setIsOpen(false);
+  };
+
   const navItems = [
     { path: '/', name: 'Home', icon: <FaHome /> },
     { path: '/service', name: 'Services', icon: <FaCode /> },
@@ -33,8 +43,8 @@ const Navbar = ({ darkMode, toggleDarkMode, className = "" }) => {
       }`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <NavLink to="/" className="flex items-center gap-2 group">
-          <span className="font-bold text-xl md:text-2xl font-outfit tracking-tighter">
+        <NavLink to="/" className="flex items-center gap-2 group" onClick={() => handleLinkClick('/')}>
+          <span className="font-bold text-lg sm:text-xl md:text-2xl font-outfit tracking-tighter whitespace-nowrap">
             Abishek Adhikari
           </span>
         </NavLink>
@@ -43,7 +53,12 @@ const Navbar = ({ darkMode, toggleDarkMode, className = "" }) => {
         <div className="hidden md:flex items-center gap-4">
           <div className="flex items-center gap-1">
             {navItems.map((item) => (
-              <NavLink key={item.path} to={item.path} className={linkClasses}>
+              <NavLink 
+                key={item.path} 
+                to={item.path} 
+                className={linkClasses}
+                onClick={() => handleLinkClick(item.path)}
+              >
                 {({ isActive }) => (
                   <>
                     <span>{item.name}</span>
@@ -103,7 +118,7 @@ const Navbar = ({ darkMode, toggleDarkMode, className = "" }) => {
                   key={item.path}
                   to={item.path}
                   className={({ isActive }) => `flex items-center gap-4 text-xl font-bold py-2 ${isActive ? 'text-blue-500' : 'text-text-secondary'}`}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleLinkClick(item.path)}
                 >
                   <span className="text-2xl text-blue-500/50">{item.icon}</span>
                   <span>{item.name}</span>

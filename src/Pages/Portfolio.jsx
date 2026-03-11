@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaExternalLinkAlt, FaGithub, FaTimes, FaSearch } from 'react-icons/fa';
-// Using professional Unsplash images for better visual appeal
-const img1 = "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=2069&auto=format&fit=crop"; // E-commerce
-const img2 = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"; // Finance
-const img3 = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop"; // Travel
-const img4 = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"; // Product Landing
-const img5 = "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2074&auto=format&fit=crop"; // Social Media
+import { FaSearch, FaTimes, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import pflo1 from '../assets/image/portfolio/pflo1.png';
+import pflo2 from '../assets/image/portfolio/pflo2.png';
+import pflo3 from '../assets/image/portfolio/pflo3.png';
+import pflo4 from '../assets/image/portfolio/pflo4.png';
+import pflo5 from '../assets/image/portfolio/pflo5.png';
+
+const img1 = pflo1; // E-commerce
+const img2 = pflo2; // Finance
+const img3 = pflo3; // Travel
+const img4 = pflo4; // Product Landing
+const img5 = pflo5; // Social Media
 const img6 = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"; // Corporate
 
 const Portfolio = () => {
@@ -90,7 +95,7 @@ const Portfolio = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-outfit">Featured <span className="text-gradient">Projects</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 font-outfit">Featured <span className="text-gradient">Projects</span></h2>
             <p className="text-text-secondary max-w-xl">
               Exploring the intersection of design and technology through practical applications.
             </p>
@@ -168,14 +173,14 @@ const Portfolio = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-8 bg-bg-primary/80 backdrop-blur-xl"
+              className="fixed inset-0 z-[60] flex items-center justify-center p-2 sm:p-4 md:p-8 bg-bg-primary/80 backdrop-blur-xl"
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                className="relative max-w-5xl w-full bg-bg-secondary rounded-[2.5rem] overflow-hidden shadow-2xl border border-glass-border"
+                className="relative max-w-5xl w-full bg-bg-secondary rounded-2xl sm:rounded-[2.5rem] overflow-y-auto max-h-[95vh] shadow-2xl border border-glass-border"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
@@ -187,18 +192,18 @@ const Portfolio = () => {
 
                 <div className="flex flex-col lg:flex-row">
                   <div className="lg:w-3/5">
-                    <img
-                      src={selectedProject.src}
+                    <img 
+                      src={selectedProject.src} 
                       alt={selectedProject.title}
-                      className="w-full h-full object-cover min-h-[300px]"
+                      className="w-full h-full object-cover min-h-[250px] sm:min-h-[300px]"
                     />
                   </div>
-                  <div className="lg:w-2/5 p-8 md:p-12 flex flex-col justify-between">
+                  <div className="lg:w-2/5 p-6 md:p-12 flex flex-col justify-between">
                     <div>
                       <span className="text-sm font-bold text-blue-500 uppercase tracking-widest mb-4 block">
                         {selectedProject.category}
                       </span>
-                      <h2 className="text-3xl font-bold mb-6 font-outfit">{selectedProject.title}</h2>
+                      <h2 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6 font-outfit">{selectedProject.title}</h2>
                       <p className="text-text-secondary mb-8 leading-relaxed">
                         {selectedProject.description}
                       </p>
@@ -214,16 +219,16 @@ const Portfolio = () => {
                       </div>
                     </div>
 
-                    <div className="flex gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
                       <a
                         href={selectedProject.live}
-                        className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-blue-600/20"
+                        className="flex-1 flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl sm:rounded-2xl font-bold transition-all shadow-lg shadow-blue-600/20 text-sm sm:text-base"
                       >
                         Live Demo <FaExternalLinkAlt size={14} />
                       </a>
                       <a
                         href={selectedProject.github}
-                        className="flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-bg-accent hover:bg-bg-primary text-text-primary rounded-2xl font-bold transition-all border border-glass-border"
+                        className="flex-1 flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-bg-accent hover:bg-bg-primary text-text-primary rounded-xl sm:rounded-2xl font-bold transition-all border border-glass-border text-sm sm:text-base"
                       >
                         GitHub <FaGithub size={18} />
                       </a>

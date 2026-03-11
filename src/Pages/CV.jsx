@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaDownload, FaFacebook, FaCalendar, FaFlag, FaUser, FaVenusMars } from 'react-icons/fa';
-import profileImage from '../assets/image/cv_profile.jpg';
+import profileImage from '../assets/image/home/cv_profile.jpg';
 
 const CV = () => {
     const handlePrint = () => {
