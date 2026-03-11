@@ -28,8 +28,8 @@ const Portfolio = () => {
       category: "Web App",
       description: "A full-featured e-commerce solution with cart functionality, secure payments, and admin dashboard.",
       tech: ["React", "Node.js", "TailwindCSS"],
-      live: "#",
-      github: "#"
+      live: "https://urban-style-tau.vercel.app/",
+      github: "https://github.com/abishek056/UrbanStyle"
     },
     {
       id: 2,
