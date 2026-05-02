@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPython, FaGitAlt, FaNodeJs, FaDatabase } from 'react-icons/fa';
 import { SiTailwindcss, SiVite, SiPostman, SiFramer } from 'react-icons/si';
 
@@ -8,10 +9,11 @@ const SkillCard = ({ name, icon, percentage, index }) => (
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="bg-bg-secondary p-6 rounded-2xl border border-glass-border shadow-sm hover:shadow-xl transition-all group"
+        transition={{ type: "spring", stiffness: 80, damping: 15, delay: index * 0.1 }}
+        className="h-full"
     >
-        <div className="flex items-center gap-4 mb-4">
+        <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} scale={1.05} transitionSpeed={2000} className="h-full bg-bg-secondary p-6 rounded-2xl border border-glass-border shadow-sm hover:shadow-xl hover:border-blue-500/30 transition-all group">
+            <div className="flex items-center gap-4 mb-4">
             <div className="text-3xl text-blue-500 group-hover:scale-110 transition-transform duration-300">
                 {icon}
             </div>
@@ -29,6 +31,7 @@ const SkillCard = ({ name, icon, percentage, index }) => (
         <div className="mt-2 text-right text-xs font-semibold text-text-secondary">
             {percentage}%
         </div>
+        </Tilt>
     </motion.div>
 );
 

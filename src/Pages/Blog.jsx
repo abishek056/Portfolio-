@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
 import { FaCalendarAlt, FaClock, FaArrowRight, FaTimes } from 'react-icons/fa';
 
 import blog1 from '../assets/image/blog/blog1.jpg';
@@ -9,6 +10,15 @@ import blog4 from '../assets/image/blog/blog4.jpg';
 
 const Blog = () => {
     const [selectedPost, setSelectedPost] = useState(null);
+
+    useEffect(() => {
+        if (selectedPost) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [selectedPost]);
 
     const posts = [
         {
@@ -78,14 +88,15 @@ const Blog = () => {
                     {posts.map((post, index) => (
                         <motion.article
                             key={post.id}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group bg-bg-secondary rounded-[2.5rem] overflow-hidden border border-glass-border hover:shadow-2xl hover:shadow-blue-500/5 transition-all cursor-pointer"
+                            transition={{ type: "spring", stiffness: 80, damping: 15, delay: index * 0.1 }}
+                            className="h-full"
                             onClick={() => setSelectedPost(post)}
                         >
-                            <div className="flex flex-col lg:flex-row h-full">
+                            <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2000} className="group h-full bg-bg-secondary rounded-[2.5rem] overflow-hidden border border-glass-border hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-500/30 transition-all cursor-pointer">
+                                <div className="flex flex-col lg:flex-row h-full">
                                 <div className="lg:w-2/5 relative overflow-hidden">
                                     <img
                                         src={post.image}
@@ -116,6 +127,7 @@ const Blog = () => {
                                     </button>
                                 </div>
                             </div>
+                            </Tilt>
                         </motion.article>
                     ))}
                 </div>

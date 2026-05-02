@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
 import {
   HiOutlineDesktopComputer,
   HiOutlineDeviceMobile,
@@ -61,15 +62,21 @@ const Service = () => {
   };
 
   const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 80, damping: 15 } }
   };
 
   return (
-    <div className="section-padding">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+    <div className="section-padding relative overflow-hidden">
+      {/* Animated Background Orbs */}
+      <div className="absolute top-0 -left-10 w-72 h-72 sm:w-96 sm:h-96 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob pointer-events-none"></div>
+      <div className="absolute top-40 -right-10 w-72 h-72 sm:w-96 sm:h-96 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 pointer-events-none"></div>
+      <div className="absolute -bottom-8 left-1/3 w-72 h-72 sm:w-96 sm:h-96 bg-pink-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000 pointer-events-none"></div>
+
+      <div className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
         className="mb-16 text-center"
       >
         <span className="text-blue-500 font-bold uppercase tracking-widest text-sm mb-4 block">What I Offer</span>
@@ -90,22 +97,26 @@ const Service = () => {
           <motion.div
             key={service.name}
             variants={item}
-            whileHover={{ y: -10 }}
-            className="group relative bg-bg-secondary p-10 rounded-[2.5rem] border border-glass-border hover:shadow-2xl hover:shadow-blue-500/10 transition-all overflow-hidden"
+            className="h-full"
           >
+            <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} scale={1.02} transitionSpeed={2500} className="h-full">
+              <div className="group h-full relative bg-bg-secondary p-10 rounded-[2.5rem] border border-glass-border hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 transition-all overflow-hidden">
             <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 rounded-full blur-3xl -mr-16 -mt-16 transition-opacity duration-500`}></div>
 
             <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center text-white text-3xl mb-8 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
               {service.icon}
             </div>
 
-            <h3 className="text-2xl font-bold mb-4 font-outfit text-text-primary">{service.name}</h3>
-            <p className="text-text-secondary leading-relaxed text-base group-hover:text-text-primary transition-colors">
-              {service.description}
-            </p>
+                <h3 className="text-2xl font-bold mb-4 font-outfit text-text-primary group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-cyan-500 transition-all">{service.name}</h3>
+                <p className="text-text-secondary leading-relaxed text-base group-hover:text-text-primary transition-colors">
+                  {service.description}
+                </p>
+              </div>
+            </Tilt>
           </motion.div>
         ))}
       </motion.div>
+      </div>
     </div>
   );
 };

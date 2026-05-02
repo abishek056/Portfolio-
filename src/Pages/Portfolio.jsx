@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
 import { FaSearch, FaTimes, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import pflo1 from '../assets/image/portfolio/pflo1.png';
 import pflo2 from '../assets/image/portfolio/pflo2.png';
@@ -17,6 +18,15 @@ const img6 = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [filter, setFilter] = useState('All');
+
+  useEffect(() => {
+      if (selectedProject) {
+          document.body.style.overflow = 'hidden';
+      } else {
+          document.body.style.overflow = 'unset';
+      }
+      return () => { document.body.style.overflow = 'unset'; };
+  }, [selectedProject]);
 
   const categories = ['All', 'Web App', 'Mobile', 'UI/UX', 'Marketing'];
 
@@ -130,9 +140,13 @@ const Portfolio = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group relative bg-bg-secondary rounded-[2rem] overflow-hidden border border-glass-border hover:shadow-2xl hover:shadow-blue-500/10 transition-all cursor-pointer"
-                onClick={() => setSelectedProject(project)}
+                className="h-full"
               >
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} scale={1.02} transitionSpeed={2000} className="h-full">
+                  <div
+                    className="group h-full relative bg-bg-secondary rounded-[2rem] overflow-hidden border border-glass-border hover:shadow-2xl hover:shadow-blue-500/20 transition-all cursor-pointer"
+                    onClick={() => setSelectedProject(project)}
+                  >
                 <div className="aspect-[16/10] overflow-hidden">
                   <img
                     src={project.src}
@@ -161,6 +175,8 @@ const Portfolio = () => {
                     ))}
                   </div>
                 </div>
+                  </div>
+                </Tilt>
               </motion.div>
             ))}
           </AnimatePresence>

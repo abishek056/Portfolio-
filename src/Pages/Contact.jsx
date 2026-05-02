@@ -22,7 +22,7 @@ const Contact = () => {
     setStatus('sending');
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/abishekaa056@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/15267aa934c1904a5637089f52b90ecf", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -147,7 +147,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Abishek Adhikari"
-                    className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary transition-all"
+                    className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                     required
                   />
                 </div>
@@ -159,7 +159,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="abishek@example.com"
-                    className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary transition-all"
+                    className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                     required
                   />
                 </div>
@@ -172,7 +172,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Project Inquiry"
-                  className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary transition-all"
+                  className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                   required
                 />
               </div>
@@ -184,7 +184,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="How can I help you?"
                   rows="5"
-                  className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary transition-all resize-none"
+                  className="w-full px-6 py-4 bg-bg-accent border border-glass-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-text-primary placeholder-gray-500 dark:placeholder-gray-400 transition-all resize-none"
                   required
                 ></textarea>
               </div>
