@@ -64,7 +64,7 @@ const Hero = () => {
                         <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold text-text-secondary">
                             A <span className="text-blue-500">
                                 <Typewriter
-                                    words={["Frontend Developer", "Python Developer", "UI/UX Artist", "Innovator"]}
+                                    words={["Frontend Developer", "Python Developer", "UI/UX Artist", "Innovator", "Vibe Coder"]}
                                     loop={0}
                                     cursor
                                     cursorStyle="_"
