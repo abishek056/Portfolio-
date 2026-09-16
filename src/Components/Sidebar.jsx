@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ImFolderDownload } from "react-icons/im";
-import { FaHome, FaUser, FaBriefcase, FaEnvelope, FaCode } from 'react-icons/fa';
+import { FaHome, FaBriefcase, FaEnvelope, FaCode } from 'react-icons/fa';
 import image1 from '../assets/image/home/image.jpg';
 
 const Sidebar = () => {

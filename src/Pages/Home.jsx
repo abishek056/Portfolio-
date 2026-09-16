@@ -6,6 +6,7 @@ import Blog from './Blog';
 import Contact from './Contact';
 import { motion } from 'framer-motion';
 
+
 const Home = () => {
   return (
     <div className="space-y-10">
